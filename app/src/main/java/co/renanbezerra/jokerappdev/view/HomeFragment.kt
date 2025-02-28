@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.renanbezerra.jokerappdev.R
+import co.renanbezerra.jokerappdev.data.CategoryRemoteDataSource
 import co.renanbezerra.jokerappdev.model.Category
 import co.renanbezerra.jokerappdev.presentation.HomePresenter
 import com.xwray.groupie.GroupieAdapter

@@ -1,18 +1,21 @@
 package co.renanbezerra.jokerappdev.presentation
 
-import android.os.Handler
-import android.os.Looper
+import co.renanbezerra.jokerappdev.data.CategoryRemoteDataSource
+import co.renanbezerra.jokerappdev.data.ListCategoryCallBack
 import co.renanbezerra.jokerappdev.model.Category
 import co.renanbezerra.jokerappdev.view.HomeFragment
 
-class HomePresenter(private val view: HomeFragment) {
+class HomePresenter(
+    private val view: HomeFragment,
+    private val dataSource: CategoryRemoteDataSource = CategoryRemoteDataSource()
+): ListCategoryCallBack {
 
     fun findAllCategories() {
         view.showProgress()
-        fakeRequest()
+        dataSource.findAllCategories(this)
     }
 
-    fun onSuccess(response: List<String>) {
+    override fun onSuccess(response: List<String>) {
         val categories = response.map {
             Category(it, 0xFFFF0000)
         }
@@ -20,24 +23,11 @@ class HomePresenter(private val view: HomeFragment) {
         view.showCategories(categories)
     }
 
-    fun onError(message: String) {
-        view.showFailure(message)
+    override fun onError(response: String) {
+        view.showFailure(response)
     }
 
-    private fun onComplete() {
+    override fun onComplete() {
         view.hideProgress()
-    }
-
-    private fun fakeRequest() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            val response = arrayListOf(
-                "Category 1",
-                "Category 2",
-                "Category 3"
-            )
-
-            onSuccess(response)
-            onComplete()
-        }, 2000)
     }
 }
