@@ -10,7 +10,7 @@ class JokePresenter(
     private val dataSource: JokeRemoteDataSource = JokeRemoteDataSource()
 ): JokeCallBack {
 
-    fun findBy(categoryName: String) {
+    fun findRandom(categoryName: String) {
         view.showProgress()
         dataSource.findBy(categoryName, this)
     }

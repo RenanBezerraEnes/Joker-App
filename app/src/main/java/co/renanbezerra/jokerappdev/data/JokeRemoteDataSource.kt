@@ -10,7 +10,7 @@ class JokeRemoteDataSource {
     fun findBy(categoryName: String, callBack: JokeCallBack) {
         HTTPClient.retrofit()
             .create(ChuckNorrisAPI::class.java)
-            .findBy(categoryName)
+            .findRandom(categoryName)
             .enqueue(object : Callback<Joke> {
                 override fun onResponse(call: Call<Joke>, response: Response<Joke>) {
                     if (response.isSuccessful) {

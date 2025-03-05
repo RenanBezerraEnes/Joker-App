@@ -9,7 +9,7 @@ class JokeDayRemoteDataSource {
     fun findJokeOfTheDay(callBack: JokeCallBack) {
         HTTPClient.retrofit()
             .create(ChuckNorrisAPI::class.java)
-            .findJokeOfTheDay()
+            .findRandom()
             .enqueue(object : Callback<Joke> {
                 override fun onResponse(call: Call<Joke>, response: Response<Joke>) {
                     if (response.isSuccessful) {

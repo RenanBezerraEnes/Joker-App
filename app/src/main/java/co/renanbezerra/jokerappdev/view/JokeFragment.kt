@@ -54,10 +54,10 @@ class JokeFragment : Fragment() {
             imageView = view.findViewById(R.id.img_joke)
 
             view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener{
-                presenter.findBy(categoryName)
+                presenter.findRandom(categoryName)
             }
 
-            presenter.findBy(categoryName)
+            presenter.findRandom(categoryName)
         }
     }
 

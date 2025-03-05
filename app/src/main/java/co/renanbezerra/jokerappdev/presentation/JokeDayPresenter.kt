@@ -1,6 +1,6 @@
 package co.renanbezerra.jokerappdev.presentation
 
-import co.renanbezerra.jokerappdev.JokeDayFragment
+import co.renanbezerra.jokerappdev.view.JokeDayFragment
 import co.renanbezerra.jokerappdev.data.JokeCallBack
 import co.renanbezerra.jokerappdev.data.JokeDayRemoteDataSource
 import co.renanbezerra.jokerappdev.model.Joke
@@ -10,7 +10,7 @@ class JokeDayPresenter(
     private val dataSource: JokeDayRemoteDataSource = JokeDayRemoteDataSource()
 ): JokeCallBack {
 
-    fun findJokeOfTheDay() {
+    fun findRandom() {
         view.showProgress()
         dataSource.findJokeOfTheDay(this)
     }

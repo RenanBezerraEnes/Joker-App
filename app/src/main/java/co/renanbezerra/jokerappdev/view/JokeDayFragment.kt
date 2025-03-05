@@ -1,4 +1,4 @@
-package co.renanbezerra.jokerappdev
+package co.renanbezerra.jokerappdev.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import co.renanbezerra.jokerappdev.R
 import co.renanbezerra.jokerappdev.model.Joke
 import co.renanbezerra.jokerappdev.presentation.JokeDayPresenter
 import com.squareup.picasso.Picasso
@@ -40,11 +41,12 @@ class JokeDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        activity?.findViewById<Toolbar>(R.id.toolbar)?.title = getString(R.string.menu_joke_day)
         progressBar = view.findViewById(R.id.progress_bar)
         textView = view.findViewById(R.id.txt_joke)
         imageView = view.findViewById(R.id.img_joke)
 
-        presenter.findJokeOfTheDay()
+        presenter.findRandom()
     }
 
 
