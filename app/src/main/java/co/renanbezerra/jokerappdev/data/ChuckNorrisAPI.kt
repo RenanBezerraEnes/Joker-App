@@ -15,4 +15,9 @@ interface ChuckNorrisAPI {
         @Query("category") categoryName: String,
         @Query("apiKey") apiKey: String = HTTPClient.API_KEY
     ) : Call<Joke>
+
+    @GET("jokes/random")
+    fun findJokeOfTheDay(
+        @Query("apiKey") apiKey: String = HTTPClient.API_KEY
+    ) : Call<Joke>
 }
